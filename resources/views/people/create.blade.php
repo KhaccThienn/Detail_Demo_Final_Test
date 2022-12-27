@@ -7,7 +7,7 @@
             <h2>Add People</h2>
         </div>
         {{-- Form thêm mới thì action phải gọi vào route store, form có upload ảnh thì phải có enctype="multipart/form-data" --}}
-        <form action="{{ route('people.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('people.store') }}" method="POST" enctype="multipart/form-data">
             {{-- Phải có @csrf không thì lỗi nặng --}}
             @csrf
             <div class="form-group">

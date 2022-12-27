@@ -26,13 +26,13 @@ class UpdatePeopleRequest extends FormRequest
         // ở đây validate:
         /**
          * name: bắt buộc, tối thiểu 3, tối đa 100
-         * image: k cần bắt buộc vì ng dùng có thể sửa ảnh hoặc không, theo đúng định dạng png,jpg,jpeg,webp,jfif
+         * avatar: k cần bắt buộc vì ng dùng có thể sửa ảnh hoặc không, theo đúng định dạng png,jpg,jpeg,webp,jfif
          * birthday: bắt buộc, đúng định dạng ngày tháng
          * about: bắt buộc nhập
         */
         return [
             'name' => "bail|required|min:3|max:100",
-            'image' => 'mimes:png,jpg,jpeg,webp,jfif',
+            'avatar' => 'mimes:png,jpg,jpeg,webp,jfif',
             'birthday' => 'bail|required|date',
             'about' => 'bail|required'
         ];

@@ -42,25 +42,22 @@ class PeopleController extends Controller
      */
     public function store(AddPeopleRequest $request)
     {
-        try {
-            // lấy ra tên file: $request-><tên_input_file>->getClientOriginalName()
-            $file_name = time() . $request->avatar->getClientOriginalName();
-            // thực hiện upload ảnh vào trong thư mục uploads
-            $request->image->move(public_path('uploads'), $file_name);
+        // lấy ra tên file: $request-><tên_input_file>->getClientOriginalName()
+        $file_name = time() . $request->avatar->getClientOriginalName();
+        // thực hiện upload ảnh vào trong thư mục uploads
+        // cú pháp: $request-><tên_input_file>->move(public_path(<tên_thư_mục_ảnh>), $biến_tên_ảnh)
+        $request->avatar->move(public_path('uploads'), $file_name);
 
-            // vì là có nhiều trường nên phải định nghĩa từng trường và dữ liệu thêm mới vào
-            People::create([
-                'name' => $request->name,
-                'province_id' => $request->province_id,
-                'avatar' => $file_name,
-                'birthday' => $request->birthday,
-                'gender' => $request->gender,
-                'about' => $request->about
-            ]);
-            return redirect()->route('people.index')->with('message', 'Insert Data Succesfully');
-        } catch (\Throwable $th) {
-            dd($th);
-        }
+        // vì là có nhiều trường nên phải định nghĩa từng trường và dữ liệu thêm mới vào
+        People::create([
+            'name' => $request->name,
+            'province_id' => $request->province_id,
+            'avatar' => $file_name,
+            'birthday' => $request->birthday,
+            'gender' => $request->gender,
+            'about' => $request->about
+        ]);
+        return redirect()->route('people.index')->with('message', 'Insert Data Succesfully');
     }
 
     /**

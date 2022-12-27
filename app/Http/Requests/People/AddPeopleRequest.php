@@ -26,13 +26,13 @@ class AddPeopleRequest extends FormRequest
         // ở đây validate:
         /**
          * name: bắt buộc, tối thiểu 3, tối đa 100
-         * image: bắt buộc, theo đúng định dạng png,jpg,jpeg,webp,jfif
+         * avatar: bắt buộc, theo đúng định dạng png,jpg,jpeg,webp,jfif
          * birthday: bắt buộc, đúng định dạng ngày tháng
          * about: bắt buộc nhập
         */
         return [
             'name' => "bail|required|min:3|max:100",
-            'image' => 'bail|required|mimes:png,jpg,jpeg,webp,jfif',
+            'avatar' => 'bail|required|mimes:png,jpg,jpeg,webp,jfif',
             'birthday' => 'bail|required|date',
             'about' => 'bail|required'
         ];
